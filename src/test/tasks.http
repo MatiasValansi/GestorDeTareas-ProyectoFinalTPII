@@ -1,0 +1,26 @@
+###
+GET http://127.0.0.1:3004/tasks/task/5f6307eb-213b-456f-ae50-975f6272596d
+
+###
+POST http://127.0.0.1:3004/tasks/task
+Content-Type: application/json
+
+{
+    "task": {
+        "title": "Avanzar con el Trabajo para Anderson",
+        "description": "Realizar la 1° parte",
+        "userId": 10
+    }
+}
+
+###
+DELETE http://127.0.0.1:3004/tasks/task/59e26a6a-f826-4706-a09a-bedcbb34037d
+
+###
+PUT http://127.0.0.1:3004/tasks/task/5f6307eb-213b-456f-ae50-975f6272596d
+Content-Type: application/json
+
+{
+    "title": "TEST DE UPDATE 5",
+    "description": "Estamos testeando el Update para ver que onda"
+}

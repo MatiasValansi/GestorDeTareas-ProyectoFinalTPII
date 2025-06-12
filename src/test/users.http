@@ -1,0 +1,25 @@
+###
+GET http://127.0.0.1:3004/users/user/10
+
+###
+POST http://127.0.0.1:3004/users/user
+Content-Type: application/json
+
+{
+    "user": {
+        "fullname": "Lionel Messi",
+        "email": "lionelmessi@gmail.com"        
+    }
+}
+
+###
+DELETE http://127.0.0.1:3004/users/user/2ad636e8-1aa6-411d-ada0-fcb6db08ac38
+
+###
+PUT http://127.0.0.1:3004/users/user/8ae59503-7fc7-4712-91a9-523898f8a0a6
+Content-Type: application/json
+
+{    
+    "fullname": "Lionel Andrés Messi 10",
+    "email": "leomessi10@gmail.com"
+}
