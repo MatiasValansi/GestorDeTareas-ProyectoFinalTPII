@@ -16,14 +16,14 @@ export const TaskService = {
 		};
 
 		const modelTaskToCreate = new Task(
-            dataTask.id,
-            dataTask.title,
-            dataTask.description,
-			dataTask.userId
-        )
-	
+			dataTask.id,
+			dataTask.title,
+			dataTask.description,
+			dataTask.userId,
+		);
+
 		const taskCreated = await TaskRepository.createOne(modelTaskToCreate);
-		
+
 		return taskCreated;
 	},
 
@@ -35,14 +35,10 @@ export const TaskService = {
 	},
 
 	serviceTaskUpdate: async (id, title, description) => {
-		const taskUpdated = await TaskRepository.updateById(
-			id, 
-			title,
-			description	
-		);
+		const taskUpdated = await TaskRepository.updateById(id, title, description);
 
 		if (!taskUpdated) return null;
-		
+
 		return taskUpdated;
 	},
 
@@ -50,7 +46,7 @@ export const TaskService = {
 		const tasks = TaskRepository.getAll();
 
 		if (!tasks) return null;
-		
+
 		return tasks;
-	}
+	},
 };

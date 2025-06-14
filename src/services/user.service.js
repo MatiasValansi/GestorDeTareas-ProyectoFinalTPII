@@ -1,59 +1,54 @@
-import { User } from "../model/User.js"
-import { TaskRepository } from "../repository/task.repository.js"
-import { UserRepository } from "../repository/user.repository.js"
+import { User } from "../model/User.js";
+import { TaskRepository } from "../repository/task.repository.js";
+import { UserRepository } from "../repository/user.repository.js";
 
 export const UserService = {
-    serviceUserValidation: async (id) => {
-        const idUser = await UserRepository.getById(id)
+	serviceUserValidation: async (id) => {
+		const idUser = await UserRepository.getById(id);
 
-        if(!idUser) return null
+		if (!idUser) return null;
 
-        return idUser
-    },
+		return idUser;
+	},
 
-    serviceUserCreation: async (userToCreate) => {
-        const dataUser = {
-            ...userToCreate,
-            id:crypto.randomUUID().toString()
-        }
+	serviceUserCreation: async (userToCreate) => {
+		const dataUser = {
+			...userToCreate,
+			id: crypto.randomUUID().toString(),
+		};
 
-        const modelUserToCreate = new User(
-            dataUser.id,
-            dataUser.fullname,
-            dataUser.email
-        )
+		const modelUserToCreate = new User(
+			dataUser.id,
+			dataUser.fullname,
+			dataUser.email,
+		);
 
-        const userCreated = await UserRepository.createOne(modelUserToCreate)
-                       
+		const userCreated = await UserRepository.createOne(modelUserToCreate);
 
-        return userCreated
-    },
+		return userCreated;
+	},
 
-    serviceUserDelete: (id) => {
-        const idUser = UserRepository.deleteById(id)
+	serviceUserDelete: (id) => {
+		const idUser = UserRepository.deleteById(id);
 
-        if(!idUser) return null
+		if (!idUser) return null;
 
-        return idUser
-    },
+		return idUser;
+	},
 
-    serviceUserUpdate: async(id, fullname, mail) => {
-        const userUpdated = await UserRepository.updateById(
-            id,
-            fullname,
-            mail
-        )
+	serviceUserUpdate: async (id, fullname, mail) => {
+		const userUpdated = await UserRepository.updateById(id, fullname, mail);
 
-        if(!userUpdated) return null
+		if (!userUpdated) return null;
 
-        return userUpdated
-    },
+		return userUpdated;
+	},
 
-    serviceUserGetAll: () => {
-        const users = TaskRepository.getAll()
+	serviceUserGetAll: () => {
+		const users = TaskRepository.getAll();
 
-        if(!users) return null
+		if (!users) return null;
 
-        return users
-    }
-}
+		return users;
+	},
+};

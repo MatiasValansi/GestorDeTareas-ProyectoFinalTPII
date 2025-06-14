@@ -1,83 +1,82 @@
-import { config } from "../config/config.js"
-import { JsonHandler } from "../utils/JsonManager.js"
+import { config } from "../config/config.js";
+import { JsonHandler } from "../utils/JsonManager.js";
 
 export const TaskRepository = {
-    getById: async (id) => {
-        const tasks = await JsonHandler.read(config.DB_PATH_TASK)
-        
-        if (!tasks) return null
+	getById: async (id) => {
+		const tasks = await JsonHandler.read(config.DB_PATH_TASK);
 
-        const taskExists = tasks.find((task) => task.id == id)
+		if (!tasks) return null;
 
-        if (!taskExists) return null
+		const taskExists = tasks.find((task) => task.id == id);
 
-        return taskExists
-    },
+		if (!taskExists) return null;
 
-    getAll: async () => await JsonHandler.read(config.DB_PATH_USER),
+		return taskExists;
+	},
 
-    createOne: async (taskToCreate)=>{
-        const tasks = await JsonHandler.read(config.DB_PATH_TASK)
-        
-        if(!tasks) return null
+	getAll: async () => await JsonHandler.read(config.DB_PATH_USER),
 
-        tasks.push(taskToCreate)
+	createOne: async (taskToCreate) => {
+		const tasks = await JsonHandler.read(config.DB_PATH_TASK);
 
-        try {
-            await JsonHandler.write(tasks, config.DB_PATH_TASK)
-        } catch (e) {
-            console.error({message: e.message});
-            
-        }
+		if (!tasks) return null;
 
-        return taskToCreate
-    },
+		tasks.push(taskToCreate);
 
-    deleteById: async (id) => {
-        const tasks = await JsonHandler.read(config.DB_PATH_TASK)
-        
-        if(!tasks) return null
+		try {
+			await JsonHandler.write(tasks, config.DB_PATH_TASK);
+		} catch (e) {
+			console.error({ message: e.message });
+		}
 
-        const taskToDeleteExists = tasks.find((eachTask) => eachTask.id == id)
+		return taskToCreate;
+	},
 
-        if(!taskToDeleteExists) return null
+	deleteById: async (id) => {
+		const tasks = await JsonHandler.read(config.DB_PATH_TASK);
 
-        const tasksToSaveAgain = tasks.filter((eachTask) => eachTask.id != id)
+		if (!tasks) return null;
 
-        try {
-            await JsonHandler.write(tasksToSaveAgain, config.DB_PATH_TASK)
-            return taskToDeleteExists
-        } catch (error) {
-            console.error(`No se ha podido eliminar ---> ${error.message}`);
-            return null
-        }
-    },
+		const taskToDeleteExists = tasks.find((eachTask) => eachTask.id == id);
 
-    updateById: async (id, title, description) => {
-        const tasks = await JsonHandler.read(config.DB_PATH_TASK)
+		if (!taskToDeleteExists) return null;
 
-        if(!tasks) return null
+		const tasksToSaveAgain = tasks.filter((eachTask) => eachTask.id != id);
 
-        const taskToUpdateExists = tasks.find((eachTask) => eachTask.id == id)
-
-        if(!taskToUpdateExists) return null
-
-        const tasksToSaveAgain = tasks.filter((eachTask) => eachTask.id != id)
-
-        const taskUpdated = {
-            ...taskToUpdateExists,
-            title: title,
-            description: description
-        }
-
-        tasksToSaveAgain.push(taskUpdated)
-
-        try {
-            await JsonHandler.write(tasksToSaveAgain, config.DB_PATH_TASK)
-            return taskUpdated
-        } catch (error) {
-            console.error(`No se ha podido actualizar ---> ${error.message}`);
+		try {
+			await JsonHandler.write(tasksToSaveAgain, config.DB_PATH_TASK);
+			return taskToDeleteExists;
+		} catch (error) {
+			console.error(`No se ha podido eliminar ---> ${error.message}`);
 			return null;
-        }
-    }
-}
+		}
+	},
+
+	updateById: async (id, title, description) => {
+		const tasks = await JsonHandler.read(config.DB_PATH_TASK);
+
+		if (!tasks) return null;
+
+		const taskToUpdateExists = tasks.find((eachTask) => eachTask.id == id);
+
+		if (!taskToUpdateExists) return null;
+
+		const tasksToSaveAgain = tasks.filter((eachTask) => eachTask.id != id);
+
+		const taskUpdated = {
+			...taskToUpdateExists,
+			title: title,
+			description: description,
+		};
+
+		tasksToSaveAgain.push(taskUpdated);
+
+		try {
+			await JsonHandler.write(tasksToSaveAgain, config.DB_PATH_TASK);
+			return taskUpdated;
+		} catch (error) {
+			console.error(`No se ha podido actualizar ---> ${error.message}`);
+			return null;
+		}
+	},
+};

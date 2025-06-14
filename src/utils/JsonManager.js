@@ -1,7 +1,5 @@
 import fs from "node:fs/promises";
 
-
-
 export const JsonHandler = {
 	async read(DB_PATH) {
 		try {
