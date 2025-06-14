@@ -1,4 +1,4 @@
-import { User } from "../model/User.js";
+import { UserModel } from "../model/User.js";
 import { TaskRepository } from "../repository/task.repository.js";
 import { UserRepository } from "../repository/user.repository.js";
 
@@ -17,7 +17,7 @@ export const UserService = {
 			id: crypto.randomUUID().toString(),
 		};
 
-		const modelUserToCreate = new User(
+		const modelUserToCreate = new UserModel(
 			dataUser.id,
 			dataUser.fullname,
 			dataUser.email,

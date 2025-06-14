@@ -1,4 +1,4 @@
-import { Task } from "../model/Task.js";
+import { TaskModel } from "../model/Task.js";
 import { TaskRepository } from "../repository/task.repository.js";
 
 export const TaskService = {

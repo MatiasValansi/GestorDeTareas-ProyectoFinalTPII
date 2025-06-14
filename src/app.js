@@ -1,7 +1,7 @@
 import express from "express";
 import { config } from "./config/config.js";
 //a modificar
-import { MongoRepository } from "./database/mongoose.cnx.js";
+//import { MongoRepository } from "./database/mongoose.cnx.js";
 import { statusRouter } from "./routes/statusRouter.js";
 import { taskRouter } from "./routes/taskRouter.js";
 import { userRouter } from "./routes/userRouter.js";
@@ -12,7 +12,7 @@ app.use(express.json());
 
 //a modificar
 app.get("/", async (req, res) => {
-	const { data } = await MongoRepository.getAll();
+    //const { data } = await MongoRepository.getAll();
 	return req.json({ data });
 });
 
