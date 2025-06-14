@@ -1,9 +1,33 @@
 import { TaskService } from "../services/task.service.js";
+import { MongoTaskRepository } from "../repository/task.mongo.repository.js";
+
+const mongoTask = new MongoTaskRepository()
 
 export const TaskController = {
+	
+	taskAll: async (req, res) => {
+		const tasks = await mongoTask.getAll()
+
+		if (tasks.length == 0) {
+			res.status(404).json({
+				payload: null,
+				message: "No se encontró ninguna tarea",
+				ok: false,
+			});
+			return;
+		}
+
+		res.status(200).json({
+			message: "Success ---> Las tareas fueron halladas correctamente",
+			payload: tasks,
+			ok: true,
+		});
+	},
+
 	taskValidation: async (req, res) => {
 		const { id } = req.params;
-		const taskFoundById = await TaskService.serviceTaskValidation(id);
+		//const taskFoundById = await TaskService.serviceTaskValidation(id);
+		const taskFoundById = await mongoTask.getById(id)
 
 		if (!taskFoundById) {
 			res.status(404).json({
@@ -25,7 +49,9 @@ export const TaskController = {
 		const { task } = req.body;
 
 		try {
-			const taskResponse = await TaskService.serviceTaskCreation(task);
+			//const taskResponse = await TaskService.serviceTaskCreation(task);
+			const taskResponse = await mongoTask.createOne(task)
+
 			res.status(200).json({
 				message: "Success --> La tarea ha sido creada",
 				payload: { ...taskResponse, tarea: taskResponse.title },
@@ -45,7 +71,8 @@ export const TaskController = {
 
 	taskDeleteOne: async (req, res) => {
 		const { id } = req.params;
-		const taskDeleted = await TaskService.serviceTaskDelete(id);
+		//const taskDeleted = await TaskService.serviceTaskDelete(id);
+		const taskDeleted = await mongoTask.deleteOne(id)
 
 		if (!taskDeleted) {
 			res.status(404).json({
@@ -68,11 +95,14 @@ export const TaskController = {
 		const { id } = req.params;
 		const { title, description } = req.body;
 
+		/*
 		const taskUpdated = await TaskService.serviceTaskUpdate(
 			id,
 			title,
 			description,
 		);
+		*/
+		const taskUpdated = await mongoTask.updateOne(id, {title, description})
 
 		if (!taskUpdated) {
 			res.status(404).json({
