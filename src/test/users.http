@@ -2,6 +2,9 @@
 GET http://127.0.0.1:3004/users/user/10
 
 ###
+GET http://127.0.0.1:3004/users/user/684f627f00cef237d803146b
+
+###
 POST http://127.0.0.1:3004/users/user
 Content-Type: application/json
 
