@@ -8,4 +8,8 @@ export const config = {
 	DB_PATH_USER: "./src/db/user.db.json",
 	DB_PATH_TASK: "./src/db/task.db.json",
 	MONGODB_URI: process.env.MONGODB_URI,
+	SECRET_KEY: "encriptado-@",
+	JWT_CONFIG:{
+		expiresIn: 1*60
+	}
 };
