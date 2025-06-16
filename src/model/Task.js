@@ -23,39 +23,15 @@ const taskSchema = new mongoose.Schema(
 			type: Date,
 			required: true,
 		},
-		city: {
-			type: String,
-			required: true,
-		},
-		weather: {
-			type: String,
-		},
-		is_holiday: {
-			type: Boolean,
-			default: false,
-		},
-		holiday_name: {
-			type: String,
-		},
-		budget: {
-			type: Number,
-		},
-		currency: {
-			type: String,
-		},
-		usd_amount: {
-			type: Number,
-		},
-		created_at: {
-			type: Date,
-			default: Date.now,
-		},
 		//Establecemos la relación entre Task y User
 		assignedTo: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",
 			required: true,
 		},
+	},
+	{
+		timestamps: true,
 	},
 	{ collection: "tasks" },
 );

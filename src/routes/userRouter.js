@@ -6,9 +6,9 @@ const userRouter = Router();
 
 userRouter.get("/user/:id", authByToken, UserController.userValidation);
 userRouter.get("/allUsers", authByToken, UserController.userAll); //GetAll
-userRouter.post("/user", UserController.userCreateOne);
-userRouter.put("/user/:id", UserController.userUpdateOne);
-userRouter.delete("/user/:id", UserController.userDeleteOne);
+userRouter.post("/user", authByToken, UserController.userCreateOne);
+userRouter.put("/user/:id", authByToken, UserController.userUpdateOne);
+userRouter.delete("/user/:id", authByToken, UserController.userDeleteOne);
 //userRouter.delete("/allUsers", (req, res) => {}); //DeleteAll
 
 export { userRouter };

@@ -6,8 +6,7 @@ export class MongoTaskRepository {
 	}
 
 	async getById(id) {
-		return await TaskModel.findById(id)
-			// .populate("tasks", "title description date assignedTo")
+		return await TaskModel.findById(id).populate("assignedTo", "name email")
 			.exec();
 	}
 

@@ -1,23 +1,27 @@
 ###
-GET http://127.0.0.1:3004/tasks/task/5f6307eb-213b-456f-ae50-975f6272596d
+GET http://127.0.0.1:3004/tasks/task/68508cf34a01cbccdbf2f245
 
 ###
 POST http://127.0.0.1:3004/tasks/task
 Content-Type: application/json
 
 {
-    "task": {
-        "title": "Avanzar con el Trabajo para Anderson",
-        "description": "Realizar la 1° parte",
-        "userId": 10
-    }
+  "task": {
+    "title": "Avanzar con el Trabajo para Anderson",
+    "description": "Realizar la 1º parte",
+    "date": "2025-06-17",
+    "assignedTo": "684f627f00cef237d803146b"
+  }
 }
 
-###
-DELETE http://127.0.0.1:3004/tasks/task/59e26a6a-f826-4706-a09a-bedcbb34037d
+
+
 
 ###
-PUT http://127.0.0.1:3004/tasks/task/5f6307eb-213b-456f-ae50-975f6272596d
+DELETE http://127.0.0.1:3004/tasks/task/6850906a8d0e08406ad5eb5a
+
+###
+PUT http://127.0.0.1:3004/tasks/task/685090d1e3f80be157fa7784
 Content-Type: application/json
 
 {

@@ -71,6 +71,8 @@ export const TaskController = {
 	taskDeleteOne: async (req, res) => {
 		const { id } = req.params;
 		//const taskDeleted = await TaskService.serviceTaskDelete(id);
+		const deletedTask = await mongoTask.getById(id);
+		const title = deletedTask.title;
 		const taskDeleted = await mongoTask.deleteOne(id);
 
 		if (!taskDeleted) {
@@ -83,8 +85,8 @@ export const TaskController = {
 		}
 
 		res.status(200).json({
-			message: `Success: La tarea "${taskDeleted.title}" fue eliminada`,
-			payload: { taskDeleted },
+			message: `Success: La tarea "${title}" fue eliminada`,
+			payload: { deletedTask },
 			ok: true,
 		});
 		return;
