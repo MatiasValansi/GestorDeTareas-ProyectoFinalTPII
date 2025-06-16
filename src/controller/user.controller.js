@@ -1,12 +1,11 @@
-import { UserService } from "../services/user.service.js";
 import { MongoUserRepository } from "../repository/user.mongo.repository.js";
+import { UserService } from "../services/user.service.js";
 
-const mongoUser = new MongoUserRepository()
+const mongoUser = new MongoUserRepository();
 
 export const UserController = {
-
 	userAll: async (req, res) => {
-		const users = await mongoUser.getAll()
+		const users = await mongoUser.getAll();
 
 		if (users.length == 0) {
 			res.status(404).json({
@@ -27,7 +26,7 @@ export const UserController = {
 	userValidation: async (req, res) => {
 		const { id } = req.params;
 		//const userFoundById = await UserService.serviceUserValidation(id);
-		const userFoundById = await mongoUser.getById(id)
+		const userFoundById = await mongoUser.getById(id);
 
 		if (!userFoundById) {
 			res.status(404).json({
@@ -50,7 +49,7 @@ export const UserController = {
 
 		try {
 			//const userResponse = await UserService.serviceUserCreation(user);
-			const userResponse = await mongoUser.createOne(user)
+			const userResponse = await mongoUser.createOne(user);
 
 			res.status(200).json({
 				message: "Success --> El usuario ha sido creado",
@@ -72,7 +71,7 @@ export const UserController = {
 	userDeleteOne: async (req, res) => {
 		const { id } = req.params;
 		//const userDeleted = await UserService.serviceUserDelete(id);
-		const userDeleted = await mongoUser.deleteOne(id)
+		const userDeleted = await mongoUser.deleteOne(id);
 
 		if (!userDeleted) {
 			res.status(404).json({
@@ -102,7 +101,7 @@ export const UserController = {
 			email,
 		);
 		*/
-		const userUpdated = await mongoUser.updateOne(id, { name, email })
+		const userUpdated = await mongoUser.updateOne(id, { name, email });
 
 		if (!userUpdated) {
 			res.status(404).json({

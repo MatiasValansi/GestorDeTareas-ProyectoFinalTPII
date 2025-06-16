@@ -1,12 +1,11 @@
-import { TaskService } from "../services/task.service.js";
 import { MongoTaskRepository } from "../repository/task.mongo.repository.js";
+import { TaskService } from "../services/task.service.js";
 
-const mongoTask = new MongoTaskRepository()
+const mongoTask = new MongoTaskRepository();
 
 export const TaskController = {
-	
 	taskAll: async (req, res) => {
-		const tasks = await mongoTask.getAll()
+		const tasks = await mongoTask.getAll();
 
 		if (tasks.length == 0) {
 			res.status(404).json({
@@ -27,7 +26,7 @@ export const TaskController = {
 	taskValidation: async (req, res) => {
 		const { id } = req.params;
 		//const taskFoundById = await TaskService.serviceTaskValidation(id);
-		const taskFoundById = await mongoTask.getById(id)
+		const taskFoundById = await mongoTask.getById(id);
 
 		if (!taskFoundById) {
 			res.status(404).json({
@@ -50,7 +49,7 @@ export const TaskController = {
 
 		try {
 			//const taskResponse = await TaskService.serviceTaskCreation(task);
-			const taskResponse = await mongoTask.createOne(task)
+			const taskResponse = await mongoTask.createOne(task);
 
 			res.status(200).json({
 				message: "Success --> La tarea ha sido creada",
@@ -72,7 +71,7 @@ export const TaskController = {
 	taskDeleteOne: async (req, res) => {
 		const { id } = req.params;
 		//const taskDeleted = await TaskService.serviceTaskDelete(id);
-		const taskDeleted = await mongoTask.deleteOne(id)
+		const taskDeleted = await mongoTask.deleteOne(id);
 
 		if (!taskDeleted) {
 			res.status(404).json({
@@ -102,7 +101,7 @@ export const TaskController = {
 			description,
 		);
 		*/
-		const taskUpdated = await mongoTask.updateOne(id, {title, description})
+		const taskUpdated = await mongoTask.updateOne(id, { title, description });
 
 		if (!taskUpdated) {
 			res.status(404).json({

@@ -2,8 +2,7 @@ import { UserModel } from "../model/User.js";
 
 export class MongoUserRepository {
 	async getAll() {
-		return await UserModel.find()
-			.exec();
+		return await UserModel.find().exec();
 	}
 
 	async getById(id) {
@@ -24,6 +23,6 @@ export class MongoUserRepository {
 	}
 	async deleteOne(id) {
 		const is_deleted = UserModel.findByIdAndDelete(id).exec();
-		return is_deleted 
+		return is_deleted;
 	}
 }

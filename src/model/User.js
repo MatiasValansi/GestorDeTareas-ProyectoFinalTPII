@@ -8,7 +8,7 @@
 
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema( 
+const userSchema = new mongoose.Schema(
 	{
 		name: { type: String, require: true, maxlength: 100, trim: true },
 		email: {
@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema(
 	{
 		timestamps: true,
 	},
-	{ collection: "users" }
+	{ collection: "users" },
 );
 
 export const UserModel = mongoose.model("User", userSchema);

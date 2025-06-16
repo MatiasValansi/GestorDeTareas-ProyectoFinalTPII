@@ -14,8 +14,8 @@ class MongoConnection {
 		try {
 			await mongoose.connect(config.MONGODB_URI, {
 				dbName: "GestorDeTareas", //Nombre del Cluster de la BD
-				useNewUrlParser: true,
-				useUnifiedTopology: true,
+				//useNewUrlParser: true,
+				//useUnifiedTopology: true,
 			});
 
 			this.connection = mongoose.connection;
