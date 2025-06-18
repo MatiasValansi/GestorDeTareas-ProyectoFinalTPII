@@ -34,7 +34,7 @@ app.get("/login", (req, res) => {
 })
 
 app.get("/", async (req, res) => {
-	return req.json({ data });
+return res.json({ message: "API Gestor de Tareas funcionando correctamente 🚀" });
 });
 
 app.use("/api", statusRouter);
