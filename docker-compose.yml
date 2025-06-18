@@ -7,5 +7,5 @@ services:
     ports:
       - "8090:3004"
     env_file:
-      - .env
+      - ./.env
     restart: always
