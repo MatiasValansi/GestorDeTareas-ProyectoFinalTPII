@@ -6,4 +6,6 @@ services:
     container_name: node-application
     ports:
       - "8090:3004"
+    env_file:
+      - .env
     restart: always
