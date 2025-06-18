@@ -41,6 +41,8 @@ app.use("/api", statusRouter);
 app.use("/tasks", taskRouter);
 app.use("/users", userRouter);
 
+export default app;
+/*
 const startServer = async () => {
 	try {
 		await mongoConnectionInstance.connect();
@@ -58,3 +60,4 @@ const startServer = async () => {
 };
 
 startServer();
+*/

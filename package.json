@@ -24,11 +24,16 @@
   },
   "contributors": [],
   "scripts": {
-    "app": "node --watch ./src/app.js",
+    "test": "jest",
+    "app": "node --watch ./src/server.js",
     "lint": "npx @biomejs/biome check --write ./src"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4"
+    "@babel/preset-env": "^7.27.2",
+    "@biomejs/biome": "1.9.4",
+    "babel": "^5.8.38",
+    "jest": "^30.0.0",
+    "supertest": "^7.1.1"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
