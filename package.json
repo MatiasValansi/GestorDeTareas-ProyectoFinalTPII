@@ -26,7 +26,8 @@
   "scripts": {
     "test": "jest",
     "app": "node --watch ./src/server.js",
-    "lint": "npx @biomejs/biome check --write ./src"
+    "start": "node ./src/server.js",
+    "lint": "npx @biomejs/biome check --write ./src"    
   },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
