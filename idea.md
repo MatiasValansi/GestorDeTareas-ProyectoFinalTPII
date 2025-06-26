@@ -1,4 +1,4 @@
-# 📋 Gestor de Tareas API
+# 📋 Gestor de Tareas API - Lucio Giraldez y Matías Valansi
 
 API REST desarrollada con **Node.js, Express y PostgreSQL** para la gestión de usuarios y tareas.  
 Incluye integración con APIs públicas para enriquecer la experiencia.
@@ -12,15 +12,6 @@ Incluye integración con APIs públicas para enriquecer la experiencia.
 - Axios
 - Nodemailer
 - Vue.js (Frontend, próximamente)
-
----
-
-## 🔗 APIs Externas Integradas
-- 🌦️ [OpenWeatherMap](https://openweathermap.org/api) → Consulta del clima.
-- 📍 [GeoDB Cities](https://rapidapi.com/wirefreethought/api/geodb-cities/) → Validación/autocompletado de ciudades.
-- 📅 [Calendarific](https://calendarific.com/) → Detección de feriados.
-- 💵 [ExchangeRate](https://exchangerate.host/) → Conversión de monedas.
-- 📧 [Nodemailer](https://nodemailer.com/) → Envío de mails al asignar tareas.
 
 ---
 
@@ -96,7 +87,7 @@ Incluye integración con APIs públicas para enriquecer la experiencia.
 3. Configurar `.env` con las claves de APIs y DB
 
 4. Levantar el servidor  
-`npm run dev`
+`npm run app`
 
 ---
 
@@ -105,6 +96,16 @@ Incluye integración con APIs públicas para enriquecer la experiencia.
 - Autenticación JWT
 - Historial de tareas completadas
 - Subida de imágenes a tareas
+
+
+## 🔗 APIs Externas que Pensamo Integrar a Futuro
+- 🌦️ [OpenWeatherMap](https://openweathermap.org/api) → Consulta del clima.
+- 📍 [GeoDB Cities](https://rapidapi.com/wirefreethought/api/geodb-cities/) → Validación/autocompletado de ciudades.
+- 📅 [Calendarific](https://calendarific.com/) → Detección de feriados.
+- 💵 [ExchangeRate](https://exchangerate.host/) → Conversión de monedas.
+- 📧 [Nodemailer](https://nodemailer.com/) → Envío de mails al asignar tareas.
+
+---
 
 ---
 
